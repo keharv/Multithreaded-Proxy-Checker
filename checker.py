@@ -6,7 +6,7 @@
 import requests
 import concurrent.futures
 global working_proxies
-global use_https
+use_https = True
 #read in proxies.txt
 def read_proxies():
     with open("proxies.txt", "r") as f:
@@ -20,7 +20,7 @@ def check_proxy(proxy):
         "https": "http://" + proxy
     }
     try:
-        response = None
+        #response = None
         if use_https:
             response = requests.get("https://httpbin.org/ip", proxies=proxies, timeout=5)
         else:
